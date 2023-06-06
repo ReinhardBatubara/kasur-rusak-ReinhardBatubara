@@ -1,0 +1,73 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="3.0">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="acer"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2022-12-09 08:20:59 PM"/>
+        <attribute name="created" value="YWNlcjtMQVBUT1AtTzMzNlE5Qk87MjAyMi0xMi0wMTsxMDoxMzozMSBBTTsyNjg2"/>
+        <attribute name="edited" value="YWNlcjtMQVBUT1AtTzMzNlE5Qk87MjAyMi0xMi0wOTswODoyMDo1OSBQTTsxMTsyODgx"/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="i, k, tot" type="Integer" array="False" size=""/>
+            <declare name="kalimat" type="String" array="False" size=""/>
+            <input variable="kalimat"/>
+            <assign variable="tot" expression="len(kalimat)"/>
+            <declare name="data" type="String" array="True" size="tot"/>
+            <call expression="kalimat(tot, kalimat, data)"/>
+            <assign variable="k" expression="0"/>
+            <assign variable="i" expression="tot-1"/>
+            <declare name="jawab" type="Boolean" array="False" size=""/>
+            <assign variable="jawab" expression="true"/>
+            <while expression="tot&gt;=1&amp;&amp;jawab=true">
+                <if expression="data[k]==data[i]">
+                    <then>
+                        <assign variable="jawab" expression="true"/>
+                        <assign variable="i" expression="i-1"/>
+                        <assign variable="k" expression="k+1"/>
+                        <assign variable="tot" expression="tot-2"/>
+                    </then>
+                    <else>
+                        <assign variable="jawab" expression="false"/>
+                    </else>
+                </if>
+            </while>
+            <if expression="jawab">
+                <then>
+                    <call expression="jawab2"/>
+                </then>
+                <else>
+                    <call expression="jawab1"/>
+                </else>
+            </if>
+        </body>
+    </function>
+    <function name="jawab1" type="None" variable="">
+        <parameters/>
+        <body>
+            <output expression="&quot;NO&quot;" newline="True"/>
+        </body>
+    </function>
+    <function name="jawab2" type="None" variable="">
+        <parameters/>
+        <body>
+            <output expression="&quot;YES&quot;" newline="True"/>
+        </body>
+    </function>
+    <function name="kalimat" type="None" variable="data">
+        <parameters>
+            <parameter name="tot" type="Integer" array="False"/>
+            <parameter name="kalimat" type="String" array="False"/>
+            <parameter name="data" type="String" array="True"/>
+        </parameters>
+        <body>
+            <declare name="i" type="Integer" array="False" size=""/>
+            <assign variable="tot" expression="len(kalimat)"/>
+            <for variable="i" start="0" end="tot-1" direction="inc" step="1">
+                <assign variable="data[i]" expression="char(kalimat, i)"/>
+            </for>
+        </body>
+    </function>
+</flowgorithm>
